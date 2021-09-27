@@ -15,12 +15,12 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 4,
   "links": [],
   "panels": [
     {
       "collapsed": true,
-      "datasource": null,
+      "datasource": "Prometheus",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -30,7 +30,7 @@
       "id": 11,
       "panels": [
         {
-          "datasource": null,
+          "datasource": "Prometheus",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -109,7 +109,7 @@
           "type": "bargauge"
         },
         {
-          "datasource": null,
+          "datasource": "Prometheus",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -180,7 +180,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "Prometheus",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -193,7 +193,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -273,7 +273,7 @@
       "type": "bargauge"
     },
     {
-      "datasource": null,
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -341,7 +341,7 @@
       "type": "bargauge"
     },
     {
-      "datasource": null,
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -468,7 +468,7 @@
       "type": "gauge"
     },
     {
-      "datasource": null,
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -506,7 +506,7 @@
       "pluginVersion": "7.4.2",
       "targets": [
         {
-          "expr": "kube_pod_labels{prometheus_replica!=\"\",label_product=\"\"}",
+          "expr": "kube_pod_labels{prometheus_replica!=\"\",label_product=\"\",namespace!~$systemns}",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -519,7 +519,7 @@
       "type": "bargauge"
     },
     {
-      "datasource": null,
+      "datasource": "Prometheus",
       "description": "Using memory of all products to all allocatable memory K8S",
       "fieldConfig": {
         "defaults": {
@@ -576,7 +576,7 @@
       "type": "gauge"
     },
     {
-      "datasource": null,
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -647,7 +647,18 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "description": null,
+        "error": null,
+        "hide": 2,
+        "label": "System namespaces",
+        "name": "systemns",
+        "query": "\"cert-manager|default|gatekeeper-system|kube-node-lease|kube-public|kube-system|logging|monitoring|nginx-ingress\"",
+        "skipUrlSync": false,
+        "type": "constant"
+      }
+    ]
   },
   "time": {
     "from": "now-5m",
@@ -656,6 +667,6 @@
   "timepicker": {},
   "timezone": "",
   "title": "Billing & utilization",
-  "uid": "XeEpnySnz",
-  "version": 17
+  "uid": "XeEpnySmz",
+  "version": 2
 }
