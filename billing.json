@@ -15,11 +15,12 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 4,
+  "id": 5,
+  "iteration": 1633512702918,
   "links": [],
   "panels": [
     {
-      "collapsed": true,
+      "collapsed": false,
       "datasource": "Prometheus",
       "gridPos": {
         "h": 1,
@@ -28,155 +29,277 @@
         "y": 0
       },
       "id": 11,
-      "panels": [
-        {
-          "datasource": "Prometheus",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 6699999999
-                  }
-                ]
-              },
-              "unit": "decbits"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 6,
-            "x": 0,
-            "y": 1
-          },
-          "id": 9,
-          "options": {
-            "displayMode": "basic",
-            "orientation": "horizontal",
-            "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "showUnfilled": true,
-            "text": {}
-          },
-          "pluginVersion": "7.4.2",
-          "targets": [
-            {
-              "expr": "sum(kube_pod_container_resource_requests_memory_bytes{prometheus_replica=\"\"}) by (node)",
-              "format": "time_series",
-              "instant": false,
-              "interval": "",
-              "legendFormat": "{{node}}-request",
-              "refId": "A"
-            },
-            {
-              "exemplar": false,
-              "expr": "sum(kube_pod_container_resource_limits_memory_bytes{prometheus_replica=\"\"}) by (node)",
-              "hide": false,
-              "instant": false,
-              "interval": "",
-              "legendFormat": "{{node}}-limits",
-              "refId": "B"
-            }
-          ],
-          "title": "Memory requests/limits",
-          "transformations": [
-            {
-              "id": "filterFieldsByName",
-              "options": {
-                "include": {
-                  "pattern": "/^(?!-).*/"
-                }
-              }
-            }
-          ],
-          "type": "bargauge"
-        },
-        {
-          "datasource": "Prometheus",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 100000000
-                  },
-                  {
-                    "color": "#EAB839",
-                    "value": 100000001
-                  },
-                  {
-                    "color": "green",
-                    "value": 500000000
-                  }
-                ]
-              },
-              "unit": "decbytes"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 5,
-            "x": 6,
-            "y": 1
-          },
-          "id": 12,
-          "options": {
-            "displayMode": "basic",
-            "orientation": "horizontal",
-            "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "showUnfilled": true,
-            "text": {}
-          },
-          "pluginVersion": "7.4.2",
-          "targets": [
-            {
-              "expr": "node_memory_MemFree_bytes * on(instance) group_left(nodename) node_uname_info{prometheus_replica=\"\"}",
-              "interval": "",
-              "legendFormat": "{{nodename}}",
-              "refId": "A"
-            }
-          ],
-          "title": "Free Memory",
-          "type": "bargauge"
-        }
-      ],
+      "panels": [],
       "title": "Infrastructure cluster",
       "type": "row"
+    },
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 6699999999
+              }
+            ]
+          },
+          "unit": "decbits"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 0,
+        "y": 1
+      },
+      "id": 9,
+      "options": {
+        "displayMode": "basic",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "sum(kube_pod_container_resource_requests_memory_bytes{prometheus_replica=\"\"}) by (node)",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{node}}-request",
+          "refId": "A"
+        },
+        {
+          "exemplar": false,
+          "expr": "sum(kube_pod_container_resource_limits_memory_bytes{prometheus_replica=\"\"}) by (node)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{node}}-limits",
+          "refId": "B"
+        }
+      ],
+      "title": "Memory requests/limits",
+      "transformations": [
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "pattern": "/^(?!-).*/"
+            }
+          }
+        }
+      ],
+      "type": "bargauge"
+    },
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 100000000
+              },
+              {
+                "color": "#EAB839",
+                "value": 100000001
+              },
+              {
+                "color": "green",
+                "value": 500000000
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 6,
+        "y": 1
+      },
+      "id": 12,
+      "options": {
+        "displayMode": "basic",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "node_memory_MemFree_bytes * on(instance) group_left(nodename) node_uname_info{prometheus_replica=\"\"}",
+          "interval": "",
+          "legendFormat": "{{nodename}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Free Memory",
+      "type": "bargauge"
+    },
+    {
+      "datasource": "Prometheus",
+      "description": "Using memory to all allocatable memory K8S",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 11,
+        "y": 1
+      },
+      "id": 21,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "exemplar": false,
+          "expr": "sum(kube_pod_container_resource_requests_memory_bytes * on(pod) group_left(label_product) kube_pod_labels{prometheus_replica=\"\"}) / sum(kube_node_status_allocatable_memory_bytes{prometheus_replica=\"\"})",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Common K8S utilization",
+      "transformations": [],
+      "type": "gauge"
+    },
+    {
+      "datasource": "Prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 0.9
+              },
+              {
+                "color": "red",
+                "value": 0.95
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 16,
+        "x": 0,
+        "y": 9
+      },
+      "id": 22,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {
+          "titleSize": 12
+        }
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "sum (kube_pod_container_resource_requests_memory_bytes{prometheus_replica=\"\"}) by (node) / sum (kube_node_status_allocatable_memory_bytes{prometheus_replica=\"\"}) by (node)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{node}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Utilization by nodes",
+      "type": "gauge"
     },
     {
       "collapsed": false,
@@ -185,7 +308,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 1
+        "y": 13
       },
       "id": 6,
       "panels": [],
@@ -222,7 +345,7 @@
         "h": 8,
         "w": 6,
         "x": 0,
-        "y": 2
+        "y": 14
       },
       "id": 2,
       "options": {
@@ -310,7 +433,7 @@
         "h": 8,
         "w": 5,
         "x": 6,
-        "y": 2
+        "y": 14
       },
       "id": 8,
       "options": {
@@ -361,7 +484,7 @@
         "h": 8,
         "w": 5,
         "x": 11,
-        "y": 2
+        "y": 14
       },
       "id": 14,
       "options": {
@@ -485,9 +608,9 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 5,
+        "w": 4,
         "x": 16,
-        "y": 2
+        "y": 14
       },
       "id": 16,
       "options": {
@@ -520,6 +643,73 @@
     },
     {
       "datasource": "Prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 0.9
+              },
+              {
+                "color": "red",
+                "value": 0.95
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 16,
+        "x": 0,
+        "y": 22
+      },
+      "id": 18,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {
+          "titleSize": 12
+        }
+      },
+      "pluginVersion": "7.4.2",
+      "repeat": null,
+      "targets": [
+        {
+          "expr": "sum (kube_pod_container_resource_requests_memory_bytes{prometheus_replica!=\"\"}) by (node) / sum (kube_node_status_allocatable_memory_bytes{prometheus_replica!=\"\"}) by (node)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{node}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Utilization by nodes",
+      "type": "gauge"
+    },
+    {
+      "datasource": "Prometheus",
       "description": "Using memory of all products to all allocatable memory K8S",
       "fieldConfig": {
         "defaults": {
@@ -538,9 +728,9 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 3,
-        "x": 21,
-        "y": 2
+        "w": 2,
+        "x": 16,
+        "y": 22
       },
       "id": 19,
       "options": {
@@ -577,7 +767,7 @@
     },
     {
       "datasource": "Prometheus",
-      "description": "",
+      "description": "Using memory to all allocatable memory K8S",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -587,20 +777,7 @@
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 0.9
-              },
-              {
-                "color": "red",
-                "value": 0.95
-              }
-            ]
+            "steps": []
           },
           "unit": "percentunit"
         },
@@ -608,11 +785,11 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 21,
-        "x": 0,
-        "y": 10
+        "w": 2,
+        "x": 18,
+        "y": 22
       },
-      "id": 18,
+      "id": 20,
       "options": {
         "reduceOptions": {
           "calcs": [
@@ -623,22 +800,26 @@
         },
         "showThresholdLabels": false,
         "showThresholdMarkers": true,
-        "text": {
-          "titleSize": 12
-        }
+        "text": {}
       },
       "pluginVersion": "7.4.2",
-      "repeat": null,
       "targets": [
         {
-          "expr": "sum (kube_pod_container_resource_requests_memory_bytes{prometheus_replica!=\"\"}) by (node) / sum (kube_node_status_allocatable_memory_bytes{prometheus_replica!=\"\"}) by (node)",
+          "exemplar": false,
+          "expr": "sum(kube_pod_container_resource_requests_memory_bytes * on(pod) group_left(label_product) kube_pod_labels{prometheus_replica!=\"\"}) / sum(kube_node_status_allocatable_memory_bytes{prometheus_replica!=\"\"})",
+          "format": "time_series",
           "hide": false,
+          "instant": false,
           "interval": "",
-          "legendFormat": "{{node}}",
+          "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Utilization by nodes",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Common K8S utilization",
+      "transformations": [],
       "type": "gauge"
     }
   ],
@@ -667,6 +848,6 @@
   "timepicker": {},
   "timezone": "",
   "title": "Billing & utilization",
-  "uid": "XeEpnySmz",
-  "version": 2
+  "uid": "JLQKStvnz",
+  "version": 9
 }
