@@ -15,8 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 5,
-  "iteration": 1633512702918,
+  "id": 1,
+  "iteration": 1634713268782,
   "links": [],
   "panels": [
     {
@@ -496,7 +496,7 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true,
+        "showThresholdMarkers": false,
         "text": {}
       },
       "pluginVersion": "7.4.2",
@@ -531,7 +531,9 @@
             "reduce": {
               "include": [
                 "anl001",
-                "saga"
+                "prc-002",
+                "saga",
+                "otpad"
               ],
               "reducer": "sum"
             },
@@ -575,12 +577,46 @@
           }
         },
         {
+          "id": "calculateField",
+          "options": {
+            "alias": "prc002%",
+            "binary": {
+              "left": "prc-002",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "Total"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "otpad%",
+            "binary": {
+              "left": "otpad",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "Total"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
           "id": "organize",
           "options": {
             "excludeByName": {
               "Time": true,
               "Total": true,
               "anl001": true,
+              "otpad": true,
+              "prc-002": true,
               "saga": true
             },
             "indexByName": {},
@@ -849,5 +885,5 @@
   "timezone": "",
   "title": "Billing & utilization",
   "uid": "JLQKStvnz",
-  "version": 9
+  "version": 2
 }
